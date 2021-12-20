@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:meal_app/meal/models/meal.dart';
-import 'package:meal_app/meal_repository.dart';
+import 'package:meal_app/repos/meal_repository.dart';
 
 part 'meal_event.dart';
 part 'meal_state.dart';

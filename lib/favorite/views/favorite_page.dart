@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:meal_app/meal/models/meal.dart';
-import 'package:meal_app/meal/views/meal_container.dart';
+import 'package:meal_app/views/meal_container.dart';
 
 class MealFavoritePage extends StatefulWidget {
   const MealFavoritePage({Key? key}) : super(key: key);
