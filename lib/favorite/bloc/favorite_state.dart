@@ -11,9 +11,9 @@ class FavoriteLoading extends FavoriteState {
 }
 
 class FavoriteLoaded extends FavoriteState {
-  const FavoriteLoaded({this.favorite = const Favorite()});
+  const FavoriteLoaded({required this.favorite});
 
-  final Favorite favorite;
+  final List<Favorite> favorite;
 
   @override
   List<Object> get props => [favorite];

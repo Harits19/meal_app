@@ -4,7 +4,7 @@ import 'package:meal_app/constans/base_constanta.dart';
 import 'package:meal_app/favorite/bloc/favorite_bloc.dart';
 import 'package:meal_app/meal/bloc/meal_bloc.dart';
 import 'package:meal_app/meal/views/meal_page.dart';
-import 'package:meal_app/repos/favorites.dart';
+import 'package:meal_app/repos/favorite_repository.dart';
 import 'package:meal_app/repos/shopping_repository.dart';
 import 'package:provider/provider.dart';
 

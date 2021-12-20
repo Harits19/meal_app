@@ -1,7 +1,7 @@
-import 'package:meal_app/repos/article.dart';
+// import 'package:meal_app/repos/article.dart';
 import 'package:moor_flutter/moor_flutter.dart';
 
-part 'favorites.g.dart';
+part 'favorite_repository.g.dart';
 
 // this will generate a table called "todos" for us. The rows of that table will
 // be represented by a class called "Todo".
@@ -28,12 +28,13 @@ class MyDatabase extends _$MyDatabase {
 
   Future<List<Favorite>> get allFavorites => select(favorites).get();
 
-  void addFavorite(Article article) {
+  void addFavorite(Favorite article) {
     var favorite = Favorite(
-        id: article.id,
-        url: article.url ?? '',
-        title: article.title ?? '',
-        category: article.type);
+      id: article.id,
+      url: article.url,
+      title: article.title,
+      category: article.category,
+    );
     into(favorites).insert(favorite);
   }
 
