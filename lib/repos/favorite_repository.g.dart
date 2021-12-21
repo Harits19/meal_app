@@ -8,49 +8,44 @@ part of 'favorite_repository.dart';
 
 // ignore_for_file: unnecessary_brace_in_string_interps, unnecessary_this
 class Favorite extends DataClass implements Insertable<Favorite> {
-  final int id;
-  final String title;
-  final String url;
-  final String? category;
-  Favorite(
-      {required this.id,
-      required this.title,
-      required this.url,
-      this.category});
+  final String idMeal;
+  final String? strMeal;
+  final String? strMealThumb;
+  Favorite({required this.idMeal, this.strMeal, this.strMealThumb});
   factory Favorite.fromData(Map<String, dynamic> data, GeneratedDatabase db,
       {String? prefix}) {
     final effectivePrefix = prefix ?? '';
     return Favorite(
-      id: const IntType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}id'])!,
-      title: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}title'])!,
-      url: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}url'])!,
-      category: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}category']),
+      idMeal: const StringType()
+          .mapFromDatabaseResponse(data['${effectivePrefix}id_meal'])!,
+      strMeal: const StringType()
+          .mapFromDatabaseResponse(data['${effectivePrefix}str_meal']),
+      strMealThumb: const StringType()
+          .mapFromDatabaseResponse(data['${effectivePrefix}str_meal_thumb']),
     );
   }
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
-    map['id'] = Variable<int>(id);
-    map['title'] = Variable<String>(title);
-    map['url'] = Variable<String>(url);
-    if (!nullToAbsent || category != null) {
-      map['category'] = Variable<String?>(category);
+    map['id_meal'] = Variable<String>(idMeal);
+    if (!nullToAbsent || strMeal != null) {
+      map['str_meal'] = Variable<String?>(strMeal);
+    }
+    if (!nullToAbsent || strMealThumb != null) {
+      map['str_meal_thumb'] = Variable<String?>(strMealThumb);
     }
     return map;
   }
 
   FavoritesCompanion toCompanion(bool nullToAbsent) {
     return FavoritesCompanion(
-      id: Value(id),
-      title: Value(title),
-      url: Value(url),
-      category: category == null && nullToAbsent
+      idMeal: Value(idMeal),
+      strMeal: strMeal == null && nullToAbsent
           ? const Value.absent()
-          : Value(category),
+          : Value(strMeal),
+      strMealThumb: strMealThumb == null && nullToAbsent
+          ? const Value.absent()
+          : Value(strMealThumb),
     );
   }
 
@@ -58,113 +53,96 @@ class Favorite extends DataClass implements Insertable<Favorite> {
       {ValueSerializer? serializer}) {
     serializer ??= moorRuntimeOptions.defaultSerializer;
     return Favorite(
-      id: serializer.fromJson<int>(json['id']),
-      title: serializer.fromJson<String>(json['title']),
-      url: serializer.fromJson<String>(json['url']),
-      category: serializer.fromJson<String?>(json['category']),
+      idMeal: serializer.fromJson<String>(json['idMeal']),
+      strMeal: serializer.fromJson<String?>(json['strMeal']),
+      strMealThumb: serializer.fromJson<String?>(json['strMealThumb']),
     );
   }
   @override
   Map<String, dynamic> toJson({ValueSerializer? serializer}) {
     serializer ??= moorRuntimeOptions.defaultSerializer;
     return <String, dynamic>{
-      'id': serializer.toJson<int>(id),
-      'title': serializer.toJson<String>(title),
-      'url': serializer.toJson<String>(url),
-      'category': serializer.toJson<String?>(category),
+      'idMeal': serializer.toJson<String>(idMeal),
+      'strMeal': serializer.toJson<String?>(strMeal),
+      'strMealThumb': serializer.toJson<String?>(strMealThumb),
     };
   }
 
-  Favorite copyWith({int? id, String? title, String? url, String? category}) =>
+  Favorite copyWith({String? idMeal, String? strMeal, String? strMealThumb}) =>
       Favorite(
-        id: id ?? this.id,
-        title: title ?? this.title,
-        url: url ?? this.url,
-        category: category ?? this.category,
+        idMeal: idMeal ?? this.idMeal,
+        strMeal: strMeal ?? this.strMeal,
+        strMealThumb: strMealThumb ?? this.strMealThumb,
       );
   @override
   String toString() {
     return (StringBuffer('Favorite(')
-          ..write('id: $id, ')
-          ..write('title: $title, ')
-          ..write('url: $url, ')
-          ..write('category: $category')
+          ..write('idMeal: $idMeal, ')
+          ..write('strMeal: $strMeal, ')
+          ..write('strMealThumb: $strMealThumb')
           ..write(')'))
         .toString();
   }
 
   @override
-  int get hashCode => Object.hash(id, title, url, category);
+  int get hashCode => Object.hash(idMeal, strMeal, strMealThumb);
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       (other is Favorite &&
-          other.id == this.id &&
-          other.title == this.title &&
-          other.url == this.url &&
-          other.category == this.category);
+          other.idMeal == this.idMeal &&
+          other.strMeal == this.strMeal &&
+          other.strMealThumb == this.strMealThumb);
 }
 
 class FavoritesCompanion extends UpdateCompanion<Favorite> {
-  final Value<int> id;
-  final Value<String> title;
-  final Value<String> url;
-  final Value<String?> category;
+  final Value<String> idMeal;
+  final Value<String?> strMeal;
+  final Value<String?> strMealThumb;
   const FavoritesCompanion({
-    this.id = const Value.absent(),
-    this.title = const Value.absent(),
-    this.url = const Value.absent(),
-    this.category = const Value.absent(),
+    this.idMeal = const Value.absent(),
+    this.strMeal = const Value.absent(),
+    this.strMealThumb = const Value.absent(),
   });
   FavoritesCompanion.insert({
-    required int id,
-    required String title,
-    required String url,
-    this.category = const Value.absent(),
-  })  : id = Value(id),
-        title = Value(title),
-        url = Value(url);
+    required String idMeal,
+    this.strMeal = const Value.absent(),
+    this.strMealThumb = const Value.absent(),
+  }) : idMeal = Value(idMeal);
   static Insertable<Favorite> custom({
-    Expression<int>? id,
-    Expression<String>? title,
-    Expression<String>? url,
-    Expression<String?>? category,
+    Expression<String>? idMeal,
+    Expression<String?>? strMeal,
+    Expression<String?>? strMealThumb,
   }) {
     return RawValuesInsertable({
-      if (id != null) 'id': id,
-      if (title != null) 'title': title,
-      if (url != null) 'url': url,
-      if (category != null) 'category': category,
+      if (idMeal != null) 'id_meal': idMeal,
+      if (strMeal != null) 'str_meal': strMeal,
+      if (strMealThumb != null) 'str_meal_thumb': strMealThumb,
     });
   }
 
   FavoritesCompanion copyWith(
-      {Value<int>? id,
-      Value<String>? title,
-      Value<String>? url,
-      Value<String?>? category}) {
+      {Value<String>? idMeal,
+      Value<String?>? strMeal,
+      Value<String?>? strMealThumb}) {
     return FavoritesCompanion(
-      id: id ?? this.id,
-      title: title ?? this.title,
-      url: url ?? this.url,
-      category: category ?? this.category,
+      idMeal: idMeal ?? this.idMeal,
+      strMeal: strMeal ?? this.strMeal,
+      strMealThumb: strMealThumb ?? this.strMealThumb,
     );
   }
 
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
-    if (id.present) {
-      map['id'] = Variable<int>(id.value);
+    if (idMeal.present) {
+      map['id_meal'] = Variable<String>(idMeal.value);
     }
-    if (title.present) {
-      map['title'] = Variable<String>(title.value);
+    if (strMeal.present) {
+      map['str_meal'] = Variable<String?>(strMeal.value);
     }
-    if (url.present) {
-      map['url'] = Variable<String>(url.value);
-    }
-    if (category.present) {
-      map['category'] = Variable<String?>(category.value);
+    if (strMealThumb.present) {
+      map['str_meal_thumb'] = Variable<String?>(strMealThumb.value);
     }
     return map;
   }
@@ -172,10 +150,9 @@ class FavoritesCompanion extends UpdateCompanion<Favorite> {
   @override
   String toString() {
     return (StringBuffer('FavoritesCompanion(')
-          ..write('id: $id, ')
-          ..write('title: $title, ')
-          ..write('url: $url, ')
-          ..write('category: $category')
+          ..write('idMeal: $idMeal, ')
+          ..write('strMeal: $strMeal, ')
+          ..write('strMealThumb: $strMealThumb')
           ..write(')'))
         .toString();
   }
@@ -186,30 +163,26 @@ class $FavoritesTable extends Favorites
   final GeneratedDatabase _db;
   final String? _alias;
   $FavoritesTable(this._db, [this._alias]);
-  final VerificationMeta _idMeta = const VerificationMeta('id');
+  final VerificationMeta _idMealMeta = const VerificationMeta('idMeal');
   @override
-  late final GeneratedColumn<int?> id = GeneratedColumn<int?>(
-      'id', aliasedName, false,
-      type: const IntType(),
+  late final GeneratedColumn<String?> idMeal = GeneratedColumn<String?>(
+      'id_meal', aliasedName, false,
+      type: const StringType(),
       requiredDuringInsert: true,
       $customConstraints: 'UNIQUE');
-  final VerificationMeta _titleMeta = const VerificationMeta('title');
+  final VerificationMeta _strMealMeta = const VerificationMeta('strMeal');
   @override
-  late final GeneratedColumn<String?> title = GeneratedColumn<String?>(
-      'title', aliasedName, false,
-      type: const StringType(), requiredDuringInsert: true);
-  final VerificationMeta _urlMeta = const VerificationMeta('url');
+  late final GeneratedColumn<String?> strMeal = GeneratedColumn<String?>(
+      'str_meal', aliasedName, true,
+      type: const StringType(), requiredDuringInsert: false);
+  final VerificationMeta _strMealThumbMeta =
+      const VerificationMeta('strMealThumb');
   @override
-  late final GeneratedColumn<String?> url = GeneratedColumn<String?>(
-      'url', aliasedName, false,
-      type: const StringType(), requiredDuringInsert: true);
-  final VerificationMeta _categoryMeta = const VerificationMeta('category');
-  @override
-  late final GeneratedColumn<String?> category = GeneratedColumn<String?>(
-      'category', aliasedName, true,
+  late final GeneratedColumn<String?> strMealThumb = GeneratedColumn<String?>(
+      'str_meal_thumb', aliasedName, true,
       type: const StringType(), requiredDuringInsert: false);
   @override
-  List<GeneratedColumn> get $columns => [id, title, url, category];
+  List<GeneratedColumn> get $columns => [idMeal, strMeal, strMealThumb];
   @override
   String get aliasedName => _alias ?? 'favorites';
   @override
@@ -219,26 +192,21 @@ class $FavoritesTable extends Favorites
       {bool isInserting = false}) {
     final context = VerificationContext();
     final data = instance.toColumns(true);
-    if (data.containsKey('id')) {
-      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    if (data.containsKey('id_meal')) {
+      context.handle(_idMealMeta,
+          idMeal.isAcceptableOrUnknown(data['id_meal']!, _idMealMeta));
     } else if (isInserting) {
-      context.missing(_idMeta);
+      context.missing(_idMealMeta);
     }
-    if (data.containsKey('title')) {
+    if (data.containsKey('str_meal')) {
+      context.handle(_strMealMeta,
+          strMeal.isAcceptableOrUnknown(data['str_meal']!, _strMealMeta));
+    }
+    if (data.containsKey('str_meal_thumb')) {
       context.handle(
-          _titleMeta, title.isAcceptableOrUnknown(data['title']!, _titleMeta));
-    } else if (isInserting) {
-      context.missing(_titleMeta);
-    }
-    if (data.containsKey('url')) {
-      context.handle(
-          _urlMeta, url.isAcceptableOrUnknown(data['url']!, _urlMeta));
-    } else if (isInserting) {
-      context.missing(_urlMeta);
-    }
-    if (data.containsKey('category')) {
-      context.handle(_categoryMeta,
-          category.isAcceptableOrUnknown(data['category']!, _categoryMeta));
+          _strMealThumbMeta,
+          strMealThumb.isAcceptableOrUnknown(
+              data['str_meal_thumb']!, _strMealThumbMeta));
     }
     return context;
   }

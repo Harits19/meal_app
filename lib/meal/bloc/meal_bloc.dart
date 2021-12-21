@@ -11,8 +11,6 @@ class MealBloc extends Bloc<MealEvent, MealState> {
     on<MealGetItemsByFirstLetter>(_onGetItemByFirstLetter);
   }
 
-  final mealRepository = MealRepository();
-
   void _onGetItemByFirstLetter(
     MealGetItemsByFirstLetter event,
     Emitter<MealState> emit,
@@ -20,7 +18,7 @@ class MealBloc extends Bloc<MealEvent, MealState> {
     emit(MealLoading());
     try {
       final meal =
-          await mealRepository.loadMealItemsByFirstLetter(event.firstLetter);
+          await MealRepository.loadMealItemsByFirstLetter(event.firstLetter);
       emit(MealLoaded(meal));
     } catch (_) {
       emit(MealError());

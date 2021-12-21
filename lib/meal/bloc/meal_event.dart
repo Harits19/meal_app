@@ -10,3 +10,10 @@ class MealGetItemsByFirstLetter extends MealEvent {
   @override
   List<Object> get props => [];
 }
+
+class MealGetItemsById extends MealEvent {
+  const MealGetItemsById({required this.id});
+  final String id;
+  @override
+  List<Object> get props => [];
+}

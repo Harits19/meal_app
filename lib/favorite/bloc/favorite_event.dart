@@ -11,19 +11,19 @@ class FavoriteStarted extends FavoriteEvent {
 }
 
 class FavoriteAdded extends FavoriteEvent {
-  const FavoriteAdded(this.favorite);
+  const FavoriteAdded(this.meal);
 
-  final Favorite favorite;
+  final Meal meal;
 
   @override
-  List<Object> get props => [favorite];
+  List<Object> get props => [meal];
 }
 
 class FavoriteRemoved extends FavoriteEvent {
-  const FavoriteRemoved(this.favorite);
+  const FavoriteRemoved(this.idMeal);
 
-  final Favorite favorite;
+  final String idMeal;
 
   @override
-  List<Object> get props => [favorite];
+  List<Object> get props => [idMeal];
 }

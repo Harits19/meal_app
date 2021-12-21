@@ -3,8 +3,12 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meal_app/constans/base_constanta.dart';
+import 'package:meal_app/favorite/bloc/favorite_bloc.dart';
 import 'package:meal_app/meal/bloc/meal_bloc.dart';
 import 'package:meal_app/favorite/views/favorite_page.dart';
+import 'package:meal_app/repos/favorite_repository.dart';
+import 'package:meal_app/views/circular_progress_widget.dart';
+import 'package:meal_app/views/empty_widget.dart';
 import 'package:meal_app/views/meal_container.dart';
 
 class MealPage extends StatefulWidget {
@@ -47,26 +51,31 @@ class _MealPageState extends State<MealPage> {
         child: Column(
           children: [
             Expanded(
-              child:
-                  BlocBuilder<MealBloc, MealState>(builder: (context, state) {
-                if (state is MealLoading) {
-                  return const Center(
-                    child: CircularProgressIndicator(),
-                  );
-                }
-                if (state is MealLoaded) {
-                  return ListView(
-                    children: [
-                      ...state.meal.map(
-                        (e) => MealContainer(
-                          meal: e,
+              child: BlocBuilder<MealBloc, MealState>(
+                builder: (context, state) {
+                  if (state is MealLoading) {
+                    return const CircularProgressWidget();
+                  }
+                  if (state is MealLoaded) {
+                    return ListView(
+                      children: [
+                        ...state.meal.map(
+                          (e) => MealContainer(
+                            meal: e,
+                            onTapFavorite: () {
+                              if (e.idMeal == null) return;
+                              context.read<FavoriteBloc>().add(
+                                    FavoriteAdded(e),
+                                  );
+                            },
+                          ),
                         ),
-                      ),
-                    ],
-                  );
-                }
-                return const Center(child: Text("Empty"));
-              }),
+                      ],
+                    );
+                  }
+                  return const EmptyWidget();
+                },
+              ),
             ),
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,

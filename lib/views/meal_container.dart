@@ -1,45 +1,72 @@
 import 'package:flutter/material.dart';
+import 'package:meal_app/favorite/bloc/favorite_bloc.dart';
 import 'package:meal_app/meal/models/meal.dart';
 import 'package:meal_app/meal/views/meal_detail_page.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:meal_app/repos/favorite_repository.dart';
 
-class MealContainer extends StatelessWidget {
+class MealContainer extends StatefulWidget {
   const MealContainer({
     Key? key,
     required this.meal,
+    this.onTapDelete,
+    this.onTapFavorite,
+    this.isFavorite = false,
   }) : super(key: key);
 
   final Meal meal;
+  final VoidCallback? onTapDelete;
+  final VoidCallback? onTapFavorite;
+  final bool isFavorite;
 
+  @override
+  State<MealContainer> createState() => _MealContainerState();
+}
+
+class _MealContainerState extends State<MealContainer> {
   @override
   Widget build(BuildContext context) {
     return Card(
       child: InkWell(
         onTap: () {
           Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) => MealDetailPage(
-                        meal: meal,
-                      )));
+            context,
+            MaterialPageRoute(
+              builder: (context) => MealDetailPage(
+                meal: widget.meal,
+                isFavorite: widget.isFavorite,
+              ),
+            ),
+          );
         },
         child: Row(
           children: [
-            Container(
+            SizedBox(
               height: 100,
               width: 100,
-              child: Image.network(meal.strMealThumb ?? ""),
+              child: (widget.meal.strMealThumb?.isEmpty ?? true)
+                  ? null
+                  : Image.network(widget.meal.strMealThumb!),
             ),
             const SizedBox(
               width: 16,
             ),
-            Text(meal.strMeal ?? ""),
+            Text(widget.meal.strMeal ?? ""),
             const Spacer(),
-            IconButton(
-              icon: const Icon(
-                Icons.star,
+            if (widget.onTapFavorite != null)
+              IconButton(
+                icon: const Icon(
+                  Icons.star,
+                ),
+                onPressed: widget.onTapFavorite,
               ),
-              onPressed: () {},
-            )
+            if (widget.onTapDelete != null)
+              IconButton(
+                icon: const Icon(
+                  Icons.delete,
+                ),
+                onPressed: widget.onTapDelete,
+              ),
           ],
         ),
       ),
