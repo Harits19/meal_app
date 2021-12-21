@@ -6,14 +6,16 @@ import 'package:meal_app/views/circular_progress_widget.dart';
 import 'package:meal_app/views/empty_widget.dart';
 import 'package:meal_app/views/meal_container.dart';
 
-class MealFavoritePage extends StatefulWidget {
-  const MealFavoritePage({Key? key}) : super(key: key);
+class FavoritePage extends StatefulWidget {
+  const FavoritePage({Key? key}) : super(key: key);
+
+  static const routeName = "/favorite";
 
   @override
-  _MealFavoritePageState createState() => _MealFavoritePageState();
+  _FavoritePageState createState() => _FavoritePageState();
 }
 
-class _MealFavoritePageState extends State<MealFavoritePage> {
+class _FavoritePageState extends State<FavoritePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

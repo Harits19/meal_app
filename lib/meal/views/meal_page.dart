@@ -14,6 +14,8 @@ import 'package:meal_app/views/meal_container.dart';
 class MealPage extends StatefulWidget {
   const MealPage({Key? key}) : super(key: key);
 
+  static const routeName = "/";
+
   @override
   _MealPageState createState() => _MealPageState();
 }
@@ -31,7 +33,7 @@ class _MealPageState extends State<MealPage> {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => const MealFavoritePage()));
+                      builder: (context) => const FavoritePage()));
             },
             child: Padding(
               padding: const EdgeInsets.all(8.0),

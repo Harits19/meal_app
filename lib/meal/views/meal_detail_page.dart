@@ -15,6 +15,8 @@ class MealDetailPage extends StatefulWidget {
   final Meal meal;
   final bool isFavorite;
 
+  static const routeName = "/detail";
+
   @override
   State<MealDetailPage> createState() => _MealDetailPageState();
 }

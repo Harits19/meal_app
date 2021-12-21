@@ -33,10 +33,10 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_bloc: ^8.0.0
+  flutter_modular: ^4.3.0
   moor_flutter: ^4.0.0
   path: ^1.8.0
   path_provider: ^2.0.8
-  provider: ^6.0.1
   sqlite3_flutter_libs: ^0.5.2
 
 dev_dependencies:

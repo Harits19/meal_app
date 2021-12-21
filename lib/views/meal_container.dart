@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:meal_app/favorite/bloc/favorite_bloc.dart';
 import 'package:meal_app/meal/models/meal.dart';
 import 'package:meal_app/meal/views/meal_detail_page.dart';
@@ -29,14 +30,12 @@ class _MealContainerState extends State<MealContainer> {
     return Card(
       child: InkWell(
         onTap: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => MealDetailPage(
-                meal: widget.meal,
-                isFavorite: widget.isFavorite,
-              ),
-            ),
+          Modular.to.pushNamed(
+            MealDetailPage.routeName,
+            arguments: {
+              "meal": widget.meal,
+              "isFavorite": widget.isFavorite,
+            },
           );
         },
         child: Row(
