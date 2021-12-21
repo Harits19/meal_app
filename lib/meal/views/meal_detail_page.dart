@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:meal_app/favorite/bloc/favorite_bloc.dart';
-import 'package:meal_app/meal/bloc/meal_bloc.dart';
 import 'package:meal_app/meal/models/meal.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meal_app/repos/meal_repository.dart';
 import 'package:meal_app/views/circular_progress_widget.dart';
 
@@ -37,7 +36,9 @@ class _MealDetailPageState extends State<MealDetailPage> {
           builder: (context) {
             return const CircularProgressWidget();
           });
-      final updatedMeal = await MealRepository.loadMealItemsById(meal.idMeal!);
+      final mealRepository = Modular.get<MealRepository>();
+
+      final updatedMeal = await mealRepository.loadMealItemsById(meal.idMeal!);
       meal = updatedMeal;
       setState(() {});
       Navigator.pop(context);

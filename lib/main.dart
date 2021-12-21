@@ -5,7 +5,7 @@ import 'package:meal_app/app.dart';
 import 'package:meal_app/favorite/views/favorite_page.dart';
 import 'package:meal_app/meal/views/meal_detail_page.dart';
 import 'package:meal_app/meal/views/meal_page.dart';
-import 'package:meal_app/repos/favorite_repository.dart';
+import 'package:meal_app/repos/meal_repository.dart';
 import 'package:meal_app/simple_bloc_observer.dart';
 
 void main() {
@@ -19,7 +19,9 @@ void main() {
 
 class AppModule extends Module {
   @override
-  List<Bind> get binds => [];
+  List<Bind> get binds => [
+        Bind.factory((i) => MealRepository()),
+      ];
 
   @override
   List<ModularRoute> get routes => [

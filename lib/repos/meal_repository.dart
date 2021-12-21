@@ -4,14 +4,13 @@ import 'package:dio/dio.dart';
 import 'package:meal_app/meal/models/meal.dart';
 
 class MealRepository {
-  static const _domain = "https://www.themealdb.com/api/json/v1/1";
+  final _domain = "https://www.themealdb.com/api/json/v1/1";
 
-  MealRepository._();
+  final dio = Dio();
 
-  static Future<List<Meal>> loadMealItemsByFirstLetter(
-      String firstLetter) async {
+  Future<List<Meal>> loadMealItemsByFirstLetter(String firstLetter) async {
     log("called load meal item");
-    final response = await Dio().get(
+    final response = await dio.get(
       _domain + '/search.php',
       queryParameters: {
         "f": firstLetter,
@@ -22,9 +21,9 @@ class MealRepository {
     return result;
   }
 
-  static Future<Meal> loadMealItemsById(String id) async {
+  Future<Meal> loadMealItemsById(String id) async {
     log("called load meal item");
-    final response = await Dio().get(
+    final response = await dio.get(
       _domain + '/lookup.php',
       queryParameters: {
         "i": id,

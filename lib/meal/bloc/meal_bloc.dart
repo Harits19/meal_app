@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:meal_app/meal/models/meal.dart';
 import 'package:meal_app/repos/meal_repository.dart';
 
@@ -11,6 +12,8 @@ class MealBloc extends Bloc<MealEvent, MealState> {
     on<MealGetItemsByFirstLetter>(_onGetItemByFirstLetter);
   }
 
+  final mealRepository = Modular.get<MealRepository>();
+
   void _onGetItemByFirstLetter(
     MealGetItemsByFirstLetter event,
     Emitter<MealState> emit,
@@ -18,7 +21,7 @@ class MealBloc extends Bloc<MealEvent, MealState> {
     emit(MealLoading());
     try {
       final meal =
-          await MealRepository.loadMealItemsByFirstLetter(event.firstLetter);
+          await mealRepository.loadMealItemsByFirstLetter(event.firstLetter);
       emit(MealLoaded(meal));
     } catch (_) {
       emit(MealError());

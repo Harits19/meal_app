@@ -1,15 +1,15 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meal_app/constans/base_constanta.dart';
 import 'package:meal_app/favorite/bloc/favorite_bloc.dart';
-import 'package:meal_app/meal/bloc/meal_bloc.dart';
 import 'package:meal_app/favorite/views/favorite_page.dart';
-import 'package:meal_app/repos/favorite_repository.dart';
+import 'package:meal_app/meal/bloc/meal_bloc.dart';
+import 'package:meal_app/meal/views/meal_detail_page.dart';
 import 'package:meal_app/views/circular_progress_widget.dart';
 import 'package:meal_app/views/empty_widget.dart';
 import 'package:meal_app/views/meal_container.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class MealPage extends StatefulWidget {
   const MealPage({Key? key}) : super(key: key);
