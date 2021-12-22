@@ -8,19 +8,19 @@ part 'favorite_event.dart';
 part 'favorite_state.dart';
 
 class FavoriteBloc extends Bloc<FavoriteEvent, FavoriteState> {
-  FavoriteBloc(this.myDatabase) : super(FavoriteLoading()) {
+  FavoriteBloc(this.favoriteRepo) : super(FavoriteLoading()) {
     on<FavoriteGetAllFavorite>(_onGetAllFavorite);
     on<FavoriteAdded>(_onItemAdded);
     on<FavoriteRemoved>(_onItemRemoved);
   }
 
-  late final FavoriteRepository myDatabase;
+  late final FavoriteRepository favoriteRepo;
 
   void _onGetAllFavorite(
       FavoriteGetAllFavorite event, Emitter<FavoriteState> emit) async {
     emit(FavoriteLoading());
     try {
-      final favorite = await myDatabase.allFavorites;
+      final favorite = await favoriteRepo.allFavorites;
       emit(FavoriteLoaded(favorite: favorite));
     } catch (_) {
       emit(FavoriteError());
@@ -28,11 +28,10 @@ class FavoriteBloc extends Bloc<FavoriteEvent, FavoriteState> {
   }
 
   void _onItemAdded(FavoriteAdded event, Emitter<FavoriteState> emit) async {
-    final state = this.state;
     emit(FavoriteLoading());
     try {
-      await myDatabase.addFavorite(event.meal);
-      final favorite = await myDatabase.allFavorites;
+      await favoriteRepo.addFavorite(event.meal);
+      final favorite = await favoriteRepo.allFavorites;
       emit(FavoriteLoaded(favorite: favorite));
     } catch (_) {
       emit(FavoriteError());
@@ -41,11 +40,10 @@ class FavoriteBloc extends Bloc<FavoriteEvent, FavoriteState> {
 
   void _onItemRemoved(
       FavoriteRemoved event, Emitter<FavoriteState> emit) async {
-    final state = this.state;
     emit(FavoriteLoading());
     try {
-      myDatabase.removeFavorite(event.idMeal);
-      final favorite = await myDatabase.allFavorites;
+      favoriteRepo.removeFavorite(event.idMeal);
+      final favorite = await favoriteRepo.allFavorites;
       emit(FavoriteLoaded(favorite: favorite));
     } catch (_) {
       emit(FavoriteError());
