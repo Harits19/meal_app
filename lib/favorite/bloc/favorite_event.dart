@@ -5,7 +5,7 @@ abstract class FavoriteEvent extends Equatable {
   const FavoriteEvent();
 }
 
-class FavoriteStarted extends FavoriteEvent {
+class FavoriteGetAllFavorite extends FavoriteEvent {
   @override
   List<Object> get props => [];
 }

@@ -1,6 +1,5 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:flutter_modular/flutter_modular.dart';
 import 'package:meal_app/meal/models/meal.dart';
 import 'package:meal_app/repos/meal_repository.dart';
 

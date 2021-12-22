@@ -26,7 +26,8 @@ class App extends StatelessWidget {
             ),
         ),
         BlocProvider(
-          create: (_) => FavoriteBloc(MyDatabase())..add(FavoriteStarted()),
+          create: (_) => FavoriteBloc(Modular.get<FavoriteRepository>())
+            ..add(FavoriteGetAllFavorite()),
         ),
       ],
       child: MaterialApp(

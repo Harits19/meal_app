@@ -10,8 +10,8 @@ class Favorites extends Table {
 }
 
 @UseMoor(tables: [Favorites])
-class MyDatabase extends _$MyDatabase {
-  MyDatabase()
+class FavoriteRepository extends _$MyDatabase {
+  FavoriteRepository()
       : super(FlutterQueryExecutor.inDatabaseFolder(path: 'db1.sqlite'));
 
   @override

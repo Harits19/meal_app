@@ -1,5 +1,6 @@
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:meal_app/favorite/views/favorite_page.dart';
+import 'package:meal_app/repos/favorite_repository.dart';
 import 'package:meal_app/views/meal_detail_page.dart';
 import 'package:meal_app/meal/views/meal_page.dart';
 import 'package:meal_app/repos/meal_repository.dart';
@@ -8,6 +9,7 @@ class AppModule extends Module {
   @override
   List<Bind> get binds => [
         Bind.factory((i) => MealRepository()),
+        Bind.factory((i) => FavoriteRepository()),
       ];
 
   @override

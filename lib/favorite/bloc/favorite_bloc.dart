@@ -9,14 +9,15 @@ part 'favorite_state.dart';
 
 class FavoriteBloc extends Bloc<FavoriteEvent, FavoriteState> {
   FavoriteBloc(this.myDatabase) : super(FavoriteLoading()) {
-    on<FavoriteStarted>(_onStarted);
+    on<FavoriteGetAllFavorite>(_onGetAllFavorite);
     on<FavoriteAdded>(_onItemAdded);
     on<FavoriteRemoved>(_onItemRemoved);
   }
 
-  late final MyDatabase myDatabase;
+  late final FavoriteRepository myDatabase;
 
-  void _onStarted(FavoriteStarted event, Emitter<FavoriteState> emit) async {
+  void _onGetAllFavorite(
+      FavoriteGetAllFavorite event, Emitter<FavoriteState> emit) async {
     emit(FavoriteLoading());
     try {
       final favorite = await myDatabase.allFavorites;
