@@ -4,8 +4,7 @@
 Aplikasi menu makanan menggunakan api dari **https://www.themealdb.com/api.php**
 
 ## Video Demo
-Untuk melihat bagaimana demo aplikasi tersebut silahkan lihat pada link berikut ini:
-[Google Drive](https://www.petanikode.com/)
+[APK](https://www.google.com/)
 
 ## APK
-[Google Drive](https://www.petanikode.com/)
+[APK](https://github.com/Harits19/meal_app/blob/main/files/app-release.apk)
