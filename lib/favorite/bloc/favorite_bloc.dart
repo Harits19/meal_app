@@ -30,14 +30,12 @@ class FavoriteBloc extends Bloc<FavoriteEvent, FavoriteState> {
   void _onItemAdded(FavoriteAdded event, Emitter<FavoriteState> emit) async {
     final state = this.state;
     emit(FavoriteLoading());
-    if (state is FavoriteLoaded) {
-      try {
-        await myDatabase.addFavorite(event.meal);
-        final favorite = await myDatabase.allFavorites;
-        emit(FavoriteLoaded(favorite: favorite));
-      } catch (_) {
-        emit(FavoriteError());
-      }
+    try {
+      await myDatabase.addFavorite(event.meal);
+      final favorite = await myDatabase.allFavorites;
+      emit(FavoriteLoaded(favorite: favorite));
+    } catch (_) {
+      emit(FavoriteError());
     }
   }
 
@@ -45,14 +43,12 @@ class FavoriteBloc extends Bloc<FavoriteEvent, FavoriteState> {
       FavoriteRemoved event, Emitter<FavoriteState> emit) async {
     final state = this.state;
     emit(FavoriteLoading());
-    if (state is FavoriteLoaded) {
-      try {
-        myDatabase.removeFavorite(event.idMeal);
-        final favorite = await myDatabase.allFavorites;
-        emit(FavoriteLoaded(favorite: favorite));
-      } catch (_) {
-        emit(FavoriteError());
-      }
+    try {
+      myDatabase.removeFavorite(event.idMeal);
+      final favorite = await myDatabase.allFavorites;
+      emit(FavoriteLoaded(favorite: favorite));
+    } catch (_) {
+      emit(FavoriteError());
     }
   }
 }

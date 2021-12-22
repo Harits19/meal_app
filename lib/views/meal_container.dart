@@ -7,14 +7,10 @@ class MealContainer extends StatefulWidget {
   const MealContainer({
     Key? key,
     required this.meal,
-    this.onTapDelete,
-    this.onTapFavorite,
     this.isFavorite = false,
   }) : super(key: key);
 
   final Meal meal;
-  final VoidCallback? onTapDelete;
-  final VoidCallback? onTapFavorite;
   final bool isFavorite;
 
   @override
@@ -49,20 +45,6 @@ class _MealContainerState extends State<MealContainer> {
             ),
             Text(widget.meal.strMeal ?? ""),
             const Spacer(),
-            if (widget.onTapFavorite != null)
-              IconButton(
-                icon: const Icon(
-                  Icons.star,
-                ),
-                onPressed: widget.onTapFavorite,
-              ),
-            if (widget.onTapDelete != null)
-              IconButton(
-                icon: const Icon(
-                  Icons.delete,
-                ),
-                onPressed: widget.onTapDelete,
-              ),
           ],
         ),
       ),

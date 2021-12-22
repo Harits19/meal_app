@@ -8,8 +8,8 @@ import 'package:meal_app/repos/meal_repository.dart';
 class AppModule extends Module {
   @override
   List<Bind> get binds => [
-        Bind.factory((i) => MealRepository()),
-        Bind.factory((i) => FavoriteRepository()),
+        Bind.singleton((i) => MealRepository()),
+        Bind.singleton((i) => FavoriteRepository()),
       ];
 
   @override

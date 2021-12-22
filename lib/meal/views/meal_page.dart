@@ -60,12 +60,6 @@ class _MealPageState extends State<MealPage> {
                         ...state.meal.map(
                           (e) => MealContainer(
                             meal: e,
-                            onTapFavorite: () {
-                              if (e.idMeal == null) return;
-                              context.read<FavoriteBloc>().add(
-                                    FavoriteAdded(e),
-                                  );
-                            },
                           ),
                         ),
                       ],

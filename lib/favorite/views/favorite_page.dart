@@ -36,11 +36,6 @@ class _FavoritePageState extends State<FavoritePage> {
                         strMeal: e.strMeal,
                         strMealThumb: e.strMealThumb,
                       ),
-                      onTapDelete: () {
-                        context.read<FavoriteBloc>().add(
-                              FavoriteRemoved(e.idMeal),
-                            );
-                      },
                     ),
                   )
                 ],
