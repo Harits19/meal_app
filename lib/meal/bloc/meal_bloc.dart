@@ -8,11 +8,11 @@ part 'meal_event.dart';
 part 'meal_state.dart';
 
 class MealBloc extends Bloc<MealEvent, MealState> {
-  MealBloc() : super(MealLoading()) {
+  MealBloc(this.mealRepository) : super(MealLoading()) {
     on<MealGetItemsByFirstLetter>(_onGetItemByFirstLetter);
   }
 
-  final mealRepository = Modular.get<MealRepository>();
+  late final MealRepository mealRepository;
 
   void _onGetItemByFirstLetter(
     MealGetItemsByFirstLetter event,

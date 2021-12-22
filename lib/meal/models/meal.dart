@@ -1,4 +1,3 @@
-import 'package:meal_app/constans/base_constanta.dart';
 import 'package:meal_app/meal/models/ingredient.dart';
 
 class Meal {

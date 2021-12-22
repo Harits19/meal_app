@@ -27,6 +27,7 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  bloc_test: ^9.0.1
   cupertino_icons: ^1.0.2
   dio: ^4.0.4
   equatable: ^2.0.3
@@ -34,6 +35,7 @@ dependencies:
     sdk: flutter
   flutter_bloc: ^8.0.0
   flutter_modular: ^4.3.0
+  matcher: ^0.12.11
   moor_flutter: ^4.0.0
   path: ^1.8.0
   path_provider: ^2.0.8

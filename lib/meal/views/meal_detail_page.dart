@@ -101,7 +101,7 @@ class _MealDetailPageState extends State<MealDetailPage> {
                 children: [
                   if (!widget.isFavorite) ...[
                     ElevatedButton(
-                      child: Text(
+                      child: const Text(
                         "Add Favorite",
                       ),
                       onPressed: () {
@@ -111,12 +111,12 @@ class _MealDetailPageState extends State<MealDetailPage> {
                             );
                       },
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 16,
                     ),
                   ] else
                     ElevatedButton(
-                      child: Text(
+                      child: const Text(
                         "Delete Favorite",
                       ),
                       onPressed: () {

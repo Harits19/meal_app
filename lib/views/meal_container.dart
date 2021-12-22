@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:meal_app/favorite/bloc/favorite_bloc.dart';
 import 'package:meal_app/meal/models/meal.dart';
 import 'package:meal_app/meal/views/meal_detail_page.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:meal_app/repos/favorite_repository.dart';
 
 class MealContainer extends StatefulWidget {
   const MealContainer({
