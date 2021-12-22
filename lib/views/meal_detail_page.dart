@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_modular/flutter_modular.dart';
+import 'package:flutter_modular/flutter_modular.dart'
+    hide ModularWatchExtension;
 import 'package:meal_app/favorite/bloc/favorite_bloc.dart';
 import 'package:meal_app/meal/models/meal.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meal_app/repos/meal_repository.dart';
 import 'package:meal_app/views/circular_progress_widget.dart';
 

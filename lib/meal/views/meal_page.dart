@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:meal_app/constans/base_constanta.dart';
+import 'package:flutter_modular/flutter_modular.dart'
+    hide ModularWatchExtension;
+import 'package:meal_app/constans/constanta.dart';
 import 'package:meal_app/favorite/bloc/favorite_bloc.dart';
 import 'package:meal_app/favorite/views/favorite_page.dart';
 import 'package:meal_app/meal/bloc/meal_bloc.dart';
@@ -27,10 +29,7 @@ class _MealPageState extends State<MealPage> {
         actions: [
           InkWell(
             onTap: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const FavoritePage()));
+              Modular.to.pushNamed(FavoritePage.routeName);
             },
             child: Padding(
               padding: const EdgeInsets.all(8.0),

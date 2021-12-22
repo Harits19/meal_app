@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:meal_app/constans/base_constanta.dart';
+import 'package:meal_app/constans/constanta.dart';
 import 'package:meal_app/favorite/bloc/favorite_bloc.dart';
 import 'package:meal_app/meal/bloc/meal_bloc.dart';
 import 'package:meal_app/meal/views/meal_page.dart';

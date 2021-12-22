@@ -1,6 +1,6 @@
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:meal_app/favorite/views/favorite_page.dart';
-import 'package:meal_app/meal/views/meal_detail_page.dart';
+import 'package:meal_app/views/meal_detail_page.dart';
 import 'package:meal_app/meal/views/meal_page.dart';
 import 'package:meal_app/repos/meal_repository.dart';
 

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:meal_app/meal/models/meal.dart';
-import 'package:meal_app/meal/views/meal_detail_page.dart';
+import 'package:meal_app/views/meal_detail_page.dart';
 
 class MealContainer extends StatefulWidget {
   const MealContainer({
