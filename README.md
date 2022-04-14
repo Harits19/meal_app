@@ -1,8 +1,8 @@
 # Meal App
 
-Ini adalah proyek untuk mengikuti proses rekrutmen PT Sinarmas menggunakan API https://www.themealdb.com/api.php
+This is my project for following the recrutment process of PT Sinarmas using API https://www.themealdb.com/api.php
 
-# Teknologi
+# Technology
 
 - [**dio**](https://pub.dev/packages/dio)
 - [**equatable**](https://pub.dev/packages/equatable)
@@ -17,4 +17,4 @@ Ini adalah proyek untuk mengikuti proses rekrutmen PT Sinarmas menggunakan API h
 
 # Demo
 
-![enter image description here](https://github.com/Harits19/meal_app/blob/main/demo/demo.gif?raw=true)
+![Demo](https://github.com/Harits19/meal_app/blob/main/demo/demo.gif?raw=true)
